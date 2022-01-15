@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+html[data-theme="dark"] {
+  --text-title: #ffffff;
+  --text-primary: #ced6d9;
+  --text-secondary: #8895a7;
+  --text-brightness: #8895a7;
+  --background: #03060b;
+  --icon-color: #ffffff;
+  --warning-slow: #241800;
+  --warning-strong: #ffc409;
+  --toggle-background:#ffffff;
+}
+
+html[data-theme="light"] {
+  --text-title: #03060b;
+  --text-primary: #445b78;
+  --text-secondary: #445b78;
+  --text-brightness: #1b6dff;
+  --background: #fff;
+  --icon-color: #92a0b3;
+  --warning-slow: #fff8e2;
+  --warning-strong: #ffc409;
+}

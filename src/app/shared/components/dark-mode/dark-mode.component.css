@@ -1,0 +1,76 @@
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--icon-color);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background:url('https://cdn-icons.flaticon.com/png/512/1823/premium/1823324.png?token=exp=1642255913~hmac=b21f5192757a584e355ddfb132030522')  no-repeat;
+  background-position: center center;
+  background-size: contain;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.light:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-image: url('https://cdn-icons.flaticon.com/png/512/2930/premium/2930224.png?token=exp=1642259647~hmac=a93558360aad35ee2e0088bfc7429c3b');
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--icon-color);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px  var(--icon-color);;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
