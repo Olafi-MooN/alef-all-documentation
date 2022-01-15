@@ -1,3 +1,21 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+:root{
+  --nav-width: 92px;
+
+  /*===== Fuente y tipografia =====*/
+  --body-font: 'Poppins', sans-serif;
+  --normal-font-size: 1rem;
+  --small-font-size: .875rem;
+
+  /*===== z index =====*/
+  --z-fixed: 100;
+
+  /* ===== sidebar and navbar ==== */
+
+}
+
+
 html[data-theme="dark"] {
   --text-title: #ffffff;
   --text-primary: #ced6d9;
@@ -19,4 +37,28 @@ html[data-theme="light"] {
   --icon-color: #92a0b3;
   --warning-slow: #fff8e2;
   --warning-strong: #ffc409;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  transition: .5s;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
 }
