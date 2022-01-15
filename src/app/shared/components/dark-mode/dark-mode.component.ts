@@ -6,6 +6,11 @@ import {
   ViewChild,
 } from '@angular/core';
 
+interface IChangeDarkModel<T = void> {
+  toLight: () => T;
+  toDark: () => T;
+}
+
 @Component({
   selector: 'alef-dark-mode',
   templateUrl: './dark-mode.component.html',
@@ -16,12 +21,14 @@ export class DarkModeComponent implements OnInit, AfterViewInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
-
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
   }
 
-  changeTheme(event: EventTarget | null) {
+  ngAfterViewInit(): void {
+    this.changeTheme(null).toDark();
+  }
+
+  changeTheme(event: EventTarget | null) : IChangeDarkModel {
     let element = event as HTMLInputElement;
 
     const changeToLight = () => {
@@ -34,6 +41,11 @@ export class DarkModeComponent implements OnInit, AfterViewInit {
       document.documentElement.setAttribute('data-theme', 'dark');
     }
 
-    element.checked ? changeToLight() : changeToDark();
+    element?.checked ? changeToLight() : changeToDark();
+
+    return {
+      toLight: () => changeToLight(),
+      toDark: () => changeToDark(),
+    };
   }
 }

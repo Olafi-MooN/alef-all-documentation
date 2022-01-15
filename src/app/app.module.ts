@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MakeTheJobModule } from '@olafi-moon/make-the-job';
 
 import { AppComponent } from './app.component';
 import { DarkModeComponent } from './shared/components/dark-mode/dark-mode.component';
@@ -10,7 +11,8 @@ import { DarkModeComponent } from './shared/components/dark-mode/dark-mode.compo
     DarkModeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MakeTheJobModule
   ],
   providers: [],
   bootstrap: [AppComponent]
