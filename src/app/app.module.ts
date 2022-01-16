@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { DarkModeComponent } from './shared/components/dark-mode/dark-mode.component';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { SidebarComponent } from './shared/components/layout/sidebar/sidebar.component';
-import { LiListComponent } from './shared/components/layout/sidebar/li-list/li-list.component';
 import { NavbarComponent } from './shared/components/layout/navbar/navbar.component';
 
 @NgModule({
@@ -15,8 +14,7 @@ import { NavbarComponent } from './shared/components/layout/navbar/navbar.compon
     DarkModeComponent,
     LayoutComponent,
     SidebarComponent,
-    LiListComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
