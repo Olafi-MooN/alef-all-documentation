@@ -5,4 +5,7 @@
   width: 100%;
   background-color: var(--background);
   border-right: thin solid var(--nav-border);
+  padding: 1rem;
 }
+
+

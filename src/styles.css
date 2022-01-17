@@ -2,10 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700;900&display=swap');
 
 :root {
+  --big-font-size: 1.345rem;
   --normal-font-size: 1rem;
   --small-font-size: .875rem;
   --font-name: 'Poppins', sans-serif;
   --navbar-height: 70px;
+  --padding-default: 8px;
 }
 
 html[data-theme="light"] {
@@ -17,20 +19,22 @@ html[data-theme="light"] {
   --icon-color: #92a0b3;
   --warning-slow: #fff8e2;
   --warning-strong: #ffc409;
-  --nav-border: #2f2f2f75;
+  --nav-border: #2f2f2f46;
+  --sidebar-selected: #f0f6ff;
 }
 
 html[data-theme="dark"] {
   --text-title: #ffffff;
   --text-primary: #ced6d9;
   --text-secondary: #8895a7;
-  --text-brightness: #8895a7;
+  --text-brightness: #1b6dff;
   --background: #03060b;
   --icon-color: #ffffff;
   --warning-slow: #241800;
   --warning-strong: #ffc409;
   --toggle-background:#ffffff;
   --nav-border: #2f2f2f;
+  --sidebar-selected: #101317;
 }
 
 * {
@@ -46,8 +50,19 @@ body {
 
   transition: .5s;
   font-family: var(--font-name);
+  color: var(--text-primary);
 }
 
 ul {
   list-style: none;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
