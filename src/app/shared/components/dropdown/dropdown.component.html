@@ -1,0 +1,8 @@
+<div class="dropdown-ul-p" [ngClass]="{'close': toggle === false, 'show': toggle === true}">
+  <div class="dropdown-div cursor-pointer" (click)="toggleDropdown()">
+    <ng-content select="[dropdown-header]"></ng-content>
+  </div>
+  <ul class="dropdown-ul-s">
+    <ng-content select="[dropdown-footer]"></ng-content>
+  </ul>
+</div>

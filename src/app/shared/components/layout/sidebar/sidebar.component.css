@@ -8,4 +8,40 @@
   padding: 1rem;
 }
 
+.dropdown-li {
+  width: 100%;
+  background-color: transparent;
+  padding: 6px;
+  font-size: var(--small-font-size);
+  padding-left: var(--padding-left-dropdown-li)
+}
 
+.dropdown-li:last-child {
+  margin-bottom: 20px;
+}
+
+.active {
+  width: 100%;
+  background-color: var(--sidebar-selected);
+  color: var(--text-brightness);
+  border-radius: 4px;
+
+}
+
+i {
+  font-size: 11px;
+  font-weight: bold;
+  display: inline-block;
+  transition: all 400ms ease-out;
+}
+
+i.active-icon {
+  display: inline-block;
+  transform: rotate(90deg);
+  transition: transform 400ms ease-in-out;
+}
+
+span {
+  padding-left: calc(var(--padding-left-dropdown-li) - 16px);
+  font-weight: bold;
+}

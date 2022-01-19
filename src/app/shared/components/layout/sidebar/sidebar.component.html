@@ -1,5 +1,13 @@
 <div class="sidebar">
-  <ul class="p-ul">
-
-  </ul>
+  <alef-dropdown  data-js="div" [opened]="isOpen" *ngFor="let item of listItem">
+    <ng-container dropdown-header>
+      <div style="width: 100%;" (click)="animationOpenDropdown($event.target)">
+        <i class="bi bi-chevron-right disabled-click" [ngClass]="{'active-icon': isOpen}"></i>
+        <span class="dropdown-span disabled-click">{{item.title}}</span>
+      </div>
+    </ng-container>
+    <ng-container dropdown-footer  *ngFor="let li of item.listLi">
+      <li class="dropdown-li" >{{li.name}}</li>
+    </ng-container>
+  </alef-dropdown>
 </div>

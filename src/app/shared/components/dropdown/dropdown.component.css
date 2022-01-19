@@ -1,0 +1,47 @@
+.dropdown-ul-p {
+  width: 100%;
+  background-color: transparent;
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+  max-height: var(--dropdown-title-height);
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+}
+
+.dropdown-ul-p.close {
+  animation-name: dropdown-reverse;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+}
+
+.dropdown-ul-p.show {
+  animation-name: dropdown;
+  animation-duration: 700ms;
+  animation-fill-mode: forwards;
+}
+
+.dropdown-div {
+  height: auto;
+}
+
+.dropdown-ul-p .dropdown-div {
+  padding: 6px;
+}
+
+
+
+@keyframes dropdown {
+  from {
+    max-height: var(--dropdown-title-height);
+  } to {
+    max-height: 100%;
+  }
+}
+
+@keyframes dropdown-reverse {
+  from {
+    max-height: 100%;
+  } to {
+    max-height: var(--dropdown-title-height);
+  }
+}

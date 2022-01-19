@@ -8,6 +8,8 @@
   --font-name: 'Poppins', sans-serif;
   --navbar-height: 70px;
   --padding-default: 8px;
+  --dropdown-title-height: 31px;
+  --padding-left-dropdown-li:  22px;
 }
 
 html[data-theme="light"] {
@@ -65,4 +67,12 @@ ul {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.disabled-click {
+  pointer-events: none;
 }
