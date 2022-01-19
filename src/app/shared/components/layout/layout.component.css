@@ -20,7 +20,7 @@
   align-items: center;
   background-color: var(--background);
   border-right: thin solid var(--nav-border);
-  border-bottom: thin solid var(--nav-border);
+  /* border-bottom: thin solid var(--nav-border); */
 }
 
 .container .left .logo figure img{

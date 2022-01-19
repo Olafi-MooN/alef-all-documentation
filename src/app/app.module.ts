@@ -7,7 +7,6 @@ import { DarkModeComponent } from './shared/components/dark-mode/dark-mode.compo
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { SidebarComponent } from './shared/components/layout/sidebar/sidebar.component';
 import { NavbarComponent } from './shared/components/layout/navbar/navbar.component';
-import { LiDropdownComponent } from './shared/components/layout/sidebar/ul-li-dropdown/ul-li-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -15,8 +14,7 @@ import { LiDropdownComponent } from './shared/components/layout/sidebar/ul-li-dr
     DarkModeComponent,
     LayoutComponent,
     SidebarComponent,
-    NavbarComponent,
-    LiDropdownComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
