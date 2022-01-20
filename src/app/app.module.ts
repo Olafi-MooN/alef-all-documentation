@@ -8,6 +8,8 @@ import { LayoutComponent } from './shared/components/layout/layout.component';
 import { SidebarComponent } from './shared/components/layout/sidebar/sidebar.component';
 import { NavbarComponent } from './shared/components/layout/navbar/navbar.component';
 import { DropdownComponent } from './shared/components/dropdown/dropdown.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,13 @@ import { DropdownComponent } from './shared/components/dropdown/dropdown.compone
     LayoutComponent,
     SidebarComponent,
     NavbarComponent,
-    DropdownComponent
+    DropdownComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    MakeTheJobModule
+    MakeTheJobModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent],
