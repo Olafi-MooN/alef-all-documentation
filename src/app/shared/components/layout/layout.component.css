@@ -4,12 +4,12 @@
 
   display: grid;
   grid-template-areas: "left right";
-  grid-template-columns: minmax(300px, 350px) 1fr;
+  grid-template-columns: 300px 1fr;
 }
 
 /* ===  Left === */
 .container .left {
-  grid-area: "left";
+  grid-area: left;
 }
 
 .container .left .logo {
@@ -29,7 +29,7 @@
 
 /* ===  Right === */
 .container .right {
-  grid-area: "right";
+  grid-area: right;
 }
 
 .container .right .content-main {

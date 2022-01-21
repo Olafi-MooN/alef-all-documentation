@@ -18,6 +18,7 @@ interface IChangeDarkModel<T = void> {
 })
 export class DarkModeComponent implements OnInit, AfterViewInit {
   @ViewChild('addClass') iconToggle: ElementRef<HTMLSpanElement> = {} as ElementRef<HTMLSpanElement>;
+  @ViewChild('statusToggle') statusToggle: ElementRef<HTMLInputElement> = {} as ElementRef<HTMLInputElement>;
 
   constructor() {}
 
@@ -25,23 +26,28 @@ export class DarkModeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.changeTheme(null).toDark();
+    localStorage.getItem("data-theme") === "dark" ? this.changeTheme(this.statusToggle.nativeElement, true).toDark() : this.changeTheme(this.statusToggle.nativeElement, true).toLight();
   }
 
-  changeTheme(event: EventTarget | null) : IChangeDarkModel {
+  changeTheme(event: EventTarget | null, local: boolean = false) : IChangeDarkModel {
     let element = event as HTMLInputElement;
+
 
     const changeToLight = () => {
       this.iconToggle.nativeElement.classList.add('light')
       document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem("data-theme", 'light');
     }
 
     const changeToDark = () => {
       this.iconToggle.nativeElement.classList.remove('light')
       document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem("data-theme", 'dark');
     }
 
-    element?.checked ? changeToLight() : changeToDark();
+    if(!local) element?.checked ? changeToLight() : changeToDark();
+
+    localStorage.getItem("data-theme") === "light" ? element.checked = true : null;
 
     return {
       toLight: () => changeToLight(),
