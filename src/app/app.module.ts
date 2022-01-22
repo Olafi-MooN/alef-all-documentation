@@ -10,6 +10,8 @@ import { NavbarComponent } from './shared/components/layout/navbar/navbar.compon
 import { DropdownComponent } from './shared/components/dropdown/dropdown.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './pages/home/home.component';
+import { CreateComponent } from './pages/create/create.component';
+import { BaseFormComponent } from './shared/components/base-form/base-form.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { HomeComponent } from './pages/home/home.component';
     SidebarComponent,
     NavbarComponent,
     DropdownComponent,
-    HomeComponent
+    HomeComponent,
+    CreateComponent,
+    BaseFormComponent
   ],
   imports: [
     BrowserModule,
