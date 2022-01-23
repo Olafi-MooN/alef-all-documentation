@@ -42,6 +42,7 @@
 .content-create .right {
   width: 100%;
   justify-content: flex-start;
+  font-size: 70%;
 }
 
 .content-create .right div {

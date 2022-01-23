@@ -34,6 +34,9 @@ pre code.hljs {
   --nav-border: #2f2f2f;
   --sidebar-selected: #101317;
   --shadow-box: #555;
+
+  --bg-sidebar-editor: #1a1a1a;
+  --bg-text-area-editor: #252526;
 }
 
 html[data-theme="light"] {
@@ -48,6 +51,10 @@ html[data-theme="light"] {
   --nav-border: #2f2f2f46;
   --sidebar-selected: #f0f6ff;
   --shadow-box: #2c2727;
+
+  --bg-sidebar-editor: #1a1a1a;
+  --bg-text-area-editor: #252526;
+  --color-text-area-editor: #ced6d9;
 }
 
 html[data-theme="dark"] {
@@ -63,6 +70,10 @@ html[data-theme="dark"] {
   --nav-border: #2f2f2f;
   --sidebar-selected: #101317;
   --shadow-box: #555;
+
+  --bg-sidebar-editor: #1a1a1a;
+  --bg-text-area-editor: #252526;
+  --color-text-area-editor: #ced6d9;
 }
 
 * {

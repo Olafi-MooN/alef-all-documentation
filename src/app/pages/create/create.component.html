@@ -2,7 +2,7 @@
   <h1>Compartilhe o seu documento</h1>
   <div class="content-markdown">
     <div class="left" hidden="true">
-      <!-- <textarea name="myText" id="myText" placeholder="Digite aqui o seu Markdown..." (keyup)="markdownVisualizer($event.target)" ></textarea> -->
+      <alef-code-editor style="width: 90%;" (textareaEmitter)="markdownVisualizer($event)"></alef-code-editor>
     </div>
     <div class="right">
       <div [innerHTML]="html"></div>

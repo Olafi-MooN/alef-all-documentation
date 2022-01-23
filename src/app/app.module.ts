@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { CreateComponent } from './pages/create/create.component';
 import { BaseFormComponent } from './shared/components/base-form/base-form.component';
+import { CodeEditorComponent } from './shared/components/code-editor/code-editor.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,11 +25,14 @@ import { BaseFormComponent } from './shared/components/base-form/base-form.compo
     DropdownComponent,
     HomeComponent,
     CreateComponent,
-    BaseFormComponent
+    BaseFormComponent,
+    CodeEditorComponent,
   ],
   imports: [
     BrowserModule,
     MakeTheJobModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],

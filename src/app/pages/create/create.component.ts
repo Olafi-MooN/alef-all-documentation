@@ -16,16 +16,14 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  markdownVisualizer(event: any) {
-    let element = event;
+  markdownVisualizer(event: string) {
+    let value = event;
 
     marked.setOptions({
       renderer: new marked.Renderer(),
       highlight: function(code, lang) {
         const hljs = highlight;
-        console.log(code)
         const language = hljs.getLanguage(lang) ? lang : 'javascript';
-        console.log(code)
         return hljs.highlight(code, { language }).value;
       },
       langPrefix: 'hljs language-', // highlight.js css expects a top-level 'hljs' class.
@@ -38,7 +36,6 @@ export class CreateComponent implements OnInit {
       xhtml: false
     });
 
-    console.log(element.value)
-    this.html =  marked.parse(element.value);
+    this.html = marked.parse(value);
   }
 }
