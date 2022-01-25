@@ -14,6 +14,7 @@ import { CreateComponent } from './pages/create/create.component';
 import { BaseFormComponent } from './shared/components/base-form/base-form.component';
 import { CodeEditorComponent } from './shared/components/code-editor/code-editor.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FirebaseComponent } from './services/firebase/firebase.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CreateComponent,
     BaseFormComponent,
     CodeEditorComponent,
+    FirebaseComponent,
   ],
   imports: [
     BrowserModule,

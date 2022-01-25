@@ -37,6 +37,10 @@ pre code.hljs {
 
   --bg-sidebar-editor: #1a1a1a;
   --bg-text-area-editor: #252526;
+
+  --input-border: #2f2f2f;
+  --bg-btn: #1a1a1a;
+  --color-btn: #ced6d9;
 }
 
 html[data-theme="light"] {
@@ -55,6 +59,11 @@ html[data-theme="light"] {
   --bg-sidebar-editor: #1a1a1a;
   --bg-text-area-editor: #252526;
   --color-text-area-editor: #ced6d9;
+
+  --input-border: #2f2f2f46;
+
+  --bg-btn: #1a1a1a;
+  --color-btn: #ced6d9;
 }
 
 html[data-theme="dark"] {
@@ -74,6 +83,10 @@ html[data-theme="dark"] {
   --bg-sidebar-editor: #1a1a1a;
   --bg-text-area-editor: #252526;
   --color-text-area-editor: #ced6d9;
+
+  --input-border: #2f2f2f46;
+  --bg-btn: #1a1a1a;
+  --color-btn: #ced6d9;
 }
 
 * {

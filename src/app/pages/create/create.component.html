@@ -1,11 +1,26 @@
 <div class="content-create">
-  <h1>Compartilhe o seu documento</h1>
-  <div class="content-markdown">
-    <div class="left" hidden="true">
+  <div class="content-markdown" [ngClass]="{'preview-show': preview, 'option-hidden teste': optionHidden}">
+    <div class="textarea">
       <alef-code-editor style="width: 90%;" (textareaEmitter)="markdownVisualizer($event)"></alef-code-editor>
     </div>
-    <div class="right">
-      <div [innerHTML]="html"></div>
-    </div>
+    <div class="preview" [ngClass]="{'d-none': !preview}" [innerHTML]="html"></div>
+    <div class="options">
+      <div class="teste">
+        <p class="title-bar-editor" (click)="changeOptionHidden()"><i class="bi bi-arrow-right-square-fill" [ngClass]="{'left': optionHidden}"></i></p>
+        <div *ngIf="!optionHidden">
+          <div class="config-preview">
+            <label for="eyes-check">Preview markdown </label>
+            <input type='checkbox' name='eyes-check' id="eyes-check" [checked]="preview" (change)="changePreview($event)"/>
+          </div>
+
+          <div class="input-group">
+            <label for="title">Titulo</label>
+            <input type="text" id="title" [(ngModel)]="title" autocomplete="none" >
+          </div>
+          <button class="btn-salvar" (click)="salvar()">Salvar</button>
+        </div>
+        </div>
+      </div>
   </div>
 </div>
+f

@@ -2,7 +2,7 @@
   padding: 20px;
   width: 100%;
   max-width: 1280px;
-  height: calc(100vh - var(--navbar-height)) ;
+  height: calc(100vh - var(--navbar-height));
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -12,45 +12,97 @@
 }
 
 .content-markdown {
-  padding: 20px;
   width: 100%;
-  max-width: 1280px;
-  height: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.content-create .right,
-.content-create .left {
-  width: 100%;
-  height: 80%;
-  display: flex;
-  justify-content: center;
-}
-
-.content-create .left textarea {
   height: 100%;
-  width: 90%;
-  border-radius: 10px;
-  outline: none;
-  padding: 20px;
-  font-size: var(--small-font-size);
-}
-
-.content-create .right {
-  width: 100%;
-  justify-content: flex-start;
-  font-size: 70%;
-}
-
-.content-create .right div {
-  width: 100%;
-}
-
-.content-create .right div pre code {
-  width: 80%;
   margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 300px;
+  gap: 12px;
+  grid-template-areas: "textarea textarea option";
 }
 
+.content-markdown.preview-show {
+  grid-template-columns: 1fr 1fr 300px;
+  grid-template-areas: "textarea preview option";
+}
+
+.content-markdown.option-hidden,
+.content-markdown.preview-show.option-hidden {
+  grid-template-columns: 1fr 1fr 40px;
+  grid-template-areas: "textarea preview option";
+}
+
+.textarea {
+  grid-area: textarea;
+  height: 100%;
+}
+
+.preview {
+  grid-area: preview;
+  display: block;
+}
+
+.preview.d-none {
+  display: none;
+}
+
+.options {
+  grid-area: option;
+  border-left: thin solid var(--nav-border);
+  padding: 12px;
+  overflow: hidden;
+}
+
+.title-bar-editor {
+  font-weight: bold;
+  letter-spacing: 0.16ch;
+  font-size: var(--big-font-size);
+}
+
+.config-preview {
+  margin: 13px 0px;
+}
+
+.btn-salvar {
+  width: 100%;
+  height: 27px;
+  cursor: pointer;
+  margin: 22px auto;
+  display: block;
+  background-color: var(--bg-btn);
+  color: var(--color-btn);
+  border: thin solid var(--input-border);
+  border-radius: 7px;
+  font-weight: bold;
+}
+
+.bi.bi-arrow-right-square-fill {
+  transition: transform 200ms ease-in;
+  display: inline-block;
+  transform: rotate(0deg);
+}
+.bi.bi-arrow-right-square-fill.left {
+  transition: transform 200ms ease-in;
+  display: inline-block;
+  transform: rotate(180deg);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: var(--small-font-size);
+  color: var(--text-primary);
+}
+
+.input-group input {
+  height: 26px;
+  margin: 6px 0 0 0;
+  outline: none;
+  border: thin solid var(--input-border);
+  border-radius: 4px;
+  padding: 0 5px;
+}
