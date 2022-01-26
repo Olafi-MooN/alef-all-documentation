@@ -19,7 +19,7 @@ export class CreateComponent implements OnInit {
   constructor(public documentationService: DocumentationService) {}
 
   ngOnInit(): void {
-
+    this.documentationService.index().then(a => console.log(a));
   }
 
   changePreview(e: any): void {

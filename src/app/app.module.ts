@@ -15,6 +15,7 @@ import { BaseFormComponent } from './shared/components/base-form/base-form.compo
 import { CodeEditorComponent } from './shared/components/code-editor/code-editor.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FirebaseComponent } from './services/firebase/firebase.component';
+import { ViewComponent } from './pages/view/view.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FirebaseComponent } from './services/firebase/firebase.component';
     BaseFormComponent,
     CodeEditorComponent,
     FirebaseComponent,
+    ViewComponent,
   ],
   imports: [
     BrowserModule,

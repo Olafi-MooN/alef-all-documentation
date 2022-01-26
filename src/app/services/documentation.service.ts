@@ -18,7 +18,7 @@ export class DocumentationService extends FirebaseComponent {
     try {
       const querySnapshot = await getDocs(collection(this.db, 'documentations'));
       querySnapshot.forEach((doc) => {
-        documentations.push(doc.data)
+        documentations.push(doc.data())
       });
     } catch (error) {
       console.log(error);
