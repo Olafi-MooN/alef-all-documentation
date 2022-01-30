@@ -15,8 +15,10 @@ import { BaseFormComponent } from './shared/components/base-form/base-form.compo
 import { CardListViewComponent } from './shared/components/card-list-view/card-list-view.component';
 import { CodeEditorComponent } from './shared/components/code-editor/code-editor.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FirebaseComponent } from './services/firebase/firebase.component';
+import { FirebaseDbComponent } from './services/firebase/firebase-db.component';
+import { FirebaseAuthComponent } from './services/firebase/firebase-auth.component';
 import { ViewComponent } from './pages/view/view.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,11 @@ import { ViewComponent } from './pages/view/view.component';
     CreateComponent,
     BaseFormComponent,
     CodeEditorComponent,
-    FirebaseComponent,
+    FirebaseDbComponent,
+    FirebaseAuthComponent,
     ViewComponent,
-    CardListViewComponent
+    CardListViewComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
