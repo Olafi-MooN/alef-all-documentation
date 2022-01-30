@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { CreateComponent } from './pages/create/create.component';
 import { BaseFormComponent } from './shared/components/base-form/base-form.component';
+import { CardListViewComponent } from './shared/components/card-list-view/card-list-view.component';
 import { CodeEditorComponent } from './shared/components/code-editor/code-editor.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FirebaseComponent } from './services/firebase/firebase.component';
@@ -31,6 +32,7 @@ import { ViewComponent } from './pages/view/view.component';
     CodeEditorComponent,
     FirebaseComponent,
     ViewComponent,
+    CardListViewComponent
   ],
   imports: [
     BrowserModule,

@@ -41,6 +41,8 @@ pre code.hljs {
   --input-border: #2f2f2f;
   --bg-btn: #1a1a1a;
   --color-btn: #ced6d9;
+
+  --shadow-box-card-view: #f5f5f0;
 }
 
 html[data-theme="light"] {
@@ -64,6 +66,8 @@ html[data-theme="light"] {
 
   --bg-btn: #1a1a1a;
   --color-btn: #ced6d9;
+
+  --shadow-box-card-view: #2c2727;
 }
 
 html[data-theme="dark"] {
@@ -87,6 +91,8 @@ html[data-theme="dark"] {
   --input-border: #2f2f2f46;
   --bg-btn: #1a1a1a;
   --color-btn: #ced6d9;
+
+  --shadow-box-card-view: #f5f5f0;
 }
 
 * {
