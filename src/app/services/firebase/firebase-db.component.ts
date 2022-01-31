@@ -1,16 +1,9 @@
-import { FirebaseAuthComponent, IFirebaseAuthUserModel } from './firebase-auth.component';
-import { Component, OnInit } from '@angular/core';
-import { FirebaseApp, initializeApp } from 'firebase/app';
 import { Firestore, getFirestore, getDocs, collection, addDoc } from 'firebase/firestore';
 
-import { environment } from '../../../environments/environment';
 import { Firebase } from './firebase.component';
+import { FirebaseAuthComponent } from './firebase-auth.component';
 
-@Component({
-  selector: 'alef-firebase',
-  template: '',
-})
-export class FirebaseDbComponent {
+export class FirebaseDb {
   public db!: Firestore;
   public app = new Firebase().configInitialFirebase();
 
@@ -24,8 +17,10 @@ export class FirebaseDbComponent {
       querySnapshot.forEach((doc) => {
         documentations.push(doc.data())
       });
+      console.log(documentations)
     } catch (error) {
-      new FirebaseAuthComponent().login().then(() => this.index());
+      await new FirebaseAuthComponent().login();
+      await this.index();
     }
 
     return documentations;
@@ -39,6 +34,8 @@ export class FirebaseDbComponent {
       }
     } catch (e) {
       console.error("Error adding document: ", e);
+      await new FirebaseAuthComponent().login();
+      await this.store(object);
     }
 
   }

@@ -1,8 +1,12 @@
-import { DocumentationService } from './../../services/documentation.service';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { marked } from 'marked';
-
+import { getStorage } from './../../shared/components/utils/utils';
+import { Component, OnInit } from '@angular/core';
 import highlight from 'highlight.js';
+import { marked } from 'marked';
+import { v4 as uuidv4 } from 'uuid';
+
+import { DocumentationService } from './../../services/documentation.service';
+import { FirebaseDb } from 'src/app/services/firebase/firebase-db.component';
+import { ICardListViewModel } from 'src/app/shared/components/card-list-view/card-list-view.component';
 
 @Component({
   selector: 'alef-create',
@@ -15,6 +19,8 @@ export class CreateComponent implements OnInit {
   public preview: boolean = false;
   public optionHidden: boolean = false;
   public title: string = '';
+
+  public model: ICardListViewModel = {} as ICardListViewModel;
 
   constructor(public documentationService: DocumentationService) {}
 
@@ -55,15 +61,19 @@ export class CreateComponent implements OnInit {
   }
 
   public salvar(): void{
-    if(this.title === "" || this.html === "") {
+    if(this.model.title === "" || this.html === "") {
       alert("Por favor, preencha todos os campos!");
       return;
     }
 
-    // this.documentationService.store({
-    //   title: this.title,
-    //   conteudo: this.html
-    // })
+    new FirebaseDb().store({
+      uuid: uuidv4(),
+      title: this.model.title,
+      conteudo: this.html,
+      nameUser: getStorage().result.user.displayName,
+      imgPost: this.model.imgPost,
+      imgProfile: getStorage().result.user.photoURL
+    })
   }
 
 

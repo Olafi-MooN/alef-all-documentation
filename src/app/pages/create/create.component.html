@@ -15,7 +15,11 @@
 
           <div class="input-group">
             <label for="title">Titulo</label>
-            <input type="text" id="title" [(ngModel)]="title" autocomplete="none" >
+            <input type="text" id="title" [(ngModel)]="model.title" autocomplete="none" >
+          </div>
+          <div class="input-group">
+            <label for="title">Titulo</label>
+            <input type="text" id="title" [(ngModel)]="model.imgPost" autocomplete="none" >
           </div>
           <button class="btn-salvar" (click)="salvar()">Salvar</button>
         </div>

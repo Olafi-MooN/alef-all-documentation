@@ -1,7 +1,6 @@
-import { FirebaseDbComponent } from './../../services/firebase/firebase-db.component';
 import { Component, OnInit } from '@angular/core';
 
-import { DocumentationService } from 'src/app/services/documentation.service';
+import { FirebaseDb } from './../../services/firebase/firebase-db.component';
 
 @Component({
   selector: 'alef-view',
@@ -11,11 +10,11 @@ import { DocumentationService } from 'src/app/services/documentation.service';
 export class ViewComponent implements OnInit {
   constructor() {}
 
-  ngOnInit(): void {
-    new FirebaseDbComponent().index();
+  async ngOnInit() {
+    console.log(await new FirebaseDb().index());
   }
 
   getFiltered(text?: string) {
-    if(!text) new FirebaseDbComponent().index();
+    if(!text) new FirebaseDb().index();
   }
 }
