@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FirebaseAuthComponent } from './../../services/firebase/firebase-auth.component';
+import { FirebaseAuthComponent, IFirebaseAuthUserModel } from './../../services/firebase/firebase-auth.component';
+import { DocumentationService } from './../../services/documentation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'alef-login',
@@ -9,15 +11,17 @@ import { FirebaseAuthComponent } from './../../services/firebase/firebase-auth.c
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(public documentationService: DocumentationService, public router: Router) { }
 
   ngOnInit(): void {
     this.login();
   }
 
-  public login() {
-    const firebaseAuth: FirebaseAuthComponent = new FirebaseAuthComponent();
-    firebaseAuth.login();
+  public async login() {
+    const firebaseAuth: IFirebaseAuthUserModel | null = await new FirebaseAuthComponent().login();
+    if(firebaseAuth !== null && firebaseAuth.token) {
+      this.router.navigateByUrl('/view');
+    }
   }
 
 }

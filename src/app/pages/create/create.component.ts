@@ -19,7 +19,7 @@ export class CreateComponent implements OnInit {
   constructor(public documentationService: DocumentationService) {}
 
   ngOnInit(): void {
-    this.documentationService.index().then(a => console.log(a));
+    // this.documentationService.index().then(a => console.log(a));
   }
 
   changePreview(e: any): void {
@@ -60,10 +60,10 @@ export class CreateComponent implements OnInit {
       return;
     }
 
-    this.documentationService.store({
-      title: this.title,
-      conteudo: this.html
-    })
+    // this.documentationService.store({
+    //   title: this.title,
+    //   conteudo: this.html
+    // })
   }
 
 
