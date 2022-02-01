@@ -15,7 +15,6 @@ import { BaseFormComponent } from './shared/components/base-form/base-form.compo
 import { CardListViewComponent } from './shared/components/card-list-view/card-list-view.component';
 import { CodeEditorComponent } from './shared/components/code-editor/code-editor.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FirebaseAuthComponent } from './services/firebase/firebase-auth.component';
 import { ViewComponent } from './pages/view/view.component';
 import { LoginComponent } from './pages/login/login.component';
 
@@ -31,7 +30,6 @@ import { LoginComponent } from './pages/login/login.component';
     CreateComponent,
     BaseFormComponent,
     CodeEditorComponent,
-    FirebaseAuthComponent,
     ViewComponent,
     CardListViewComponent,
     LoginComponent

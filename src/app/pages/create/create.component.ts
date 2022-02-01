@@ -1,11 +1,8 @@
-import { getStorage } from './../../shared/components/utils/utils';
 import { Component, OnInit } from '@angular/core';
 import highlight from 'highlight.js';
 import { marked } from 'marked';
 import { v4 as uuidv4 } from 'uuid';
 
-import { DocumentationService } from './../../services/documentation.service';
-import { FirebaseDb } from 'src/app/services/firebase/firebase-db.component';
 import { ICardListViewModel } from 'src/app/shared/components/card-list-view/card-list-view.component';
 
 @Component({
@@ -22,7 +19,7 @@ export class CreateComponent implements OnInit {
 
   public model: ICardListViewModel = {} as ICardListViewModel;
 
-  constructor(public documentationService: DocumentationService) {}
+  constructor() {}
 
   ngOnInit(): void {
     // this.documentationService.index().then(a => console.log(a));
@@ -61,20 +58,13 @@ export class CreateComponent implements OnInit {
   }
 
   public salvar(): void{
-    if(this.model.title === "" || this.html === "") {
-      alert("Por favor, preencha todos os campos!");
-      return;
-    }
-
-    new FirebaseDb().store({
-      uuid: uuidv4(),
-      title: this.model.title,
-      conteudo: this.html,
-      nameUser: getStorage().result.user.displayName,
-      imgPost: this.model.imgPost,
-      imgProfile: getStorage().result.user.photoURL
-    })
+    // new FirebaseDb().store({
+    //   uuid: uuidv4(),
+    //   title: this.model.title,
+    //   conteudo: this.html,
+    //   nameUser: getStorage().result.user.displayName,
+    //   imgPost: this.model.imgPost,
+    //   imgProfile: getStorage().result.user.photoURL
+    // })
   }
-
-
 }
