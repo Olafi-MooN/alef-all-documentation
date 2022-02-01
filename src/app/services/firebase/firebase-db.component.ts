@@ -2,10 +2,12 @@ import { Firestore, getFirestore, getDocs, collection, addDoc } from 'firebase/f
 
 import { Firebase } from './firebase.component';
 import { FirebaseAuthComponent } from './firebase-auth.component';
+import { Subject } from 'rxjs';
 
 export class FirebaseDb {
   public db!: Firestore;
   public app = new Firebase().configInitialFirebase();
+  public listDocuments!: any[];
 
   constructor() {}
 
@@ -17,12 +19,13 @@ export class FirebaseDb {
       querySnapshot.forEach((doc) => {
         documentations.push(doc.data())
       });
-      console.log(documentations)
+
     } catch (error) {
       await new FirebaseAuthComponent().login();
       await this.index();
     }
 
+    this.listDocuments = documentations;
     return documentations;
   }
 

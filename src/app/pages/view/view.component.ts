@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 import { FirebaseDb } from './../../services/firebase/firebase-db.component';
 
@@ -7,11 +7,17 @@ import { FirebaseDb } from './../../services/firebase/firebase-db.component';
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css'],
 })
-export class ViewComponent implements OnInit {
+export class ViewComponent implements OnInit, OnChanges {
   constructor() {}
 
+  ngOnChanges(changes: SimpleChanges): void {
+  }
+
   async ngOnInit() {
-    console.log(await new FirebaseDb().index());
+    const firebaseDb: FirebaseDb = new FirebaseDb();
+    firebaseDb.index().then(() => {
+      console.log(firebaseDb.listDocuments)
+    })
   }
 
   getFiltered(text?: string) {
