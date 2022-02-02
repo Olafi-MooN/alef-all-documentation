@@ -5,6 +5,7 @@ export interface ICardListViewModel {
   imgProfile?: string;
   nameUser?: string;
   imgPost?: string;
+  uuid: string;
 }
 
 @Component({

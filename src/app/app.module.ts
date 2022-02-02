@@ -1,6 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MakeTheJobModule } from '@olafi-moon/make-the-job';
+import { AngularFireModule } from '@angular/fire/compat'
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { AppComponent } from './app.component';
 import { DarkModeComponent } from './shared/components/dark-mode/dark-mode.component';
@@ -17,6 +19,8 @@ import { CodeEditorComponent } from './shared/components/code-editor/code-editor
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewComponent } from './pages/view/view.component';
 import { LoginComponent } from './pages/login/login.component';
+import { environment } from 'src/environments/environment';
+import { PERSISTENCE, SETTINGS as AUTH_SETTINGS  } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -39,9 +43,14 @@ import { LoginComponent } from './pages/login/login.component';
     MakeTheJobModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule.enablePersistence()
   ],
-  providers: [],
+  providers: [
+    { provide: AUTH_SETTINGS, useValue: { appVerificationDisabledForTesting: true } },
+    { provide: PERSISTENCE, useValue: 'local' },
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

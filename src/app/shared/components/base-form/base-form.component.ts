@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'alef-base-form',
@@ -6,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class BaseFormComponent implements OnInit {
+export class BaseFormComponent {
+  public id: number | string = '';
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(public route: ActivatedRoute) {
+    this.route.params.subscribe(params => this.id = params['id'] )
   }
 
 }

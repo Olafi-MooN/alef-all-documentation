@@ -73,6 +73,10 @@
   padding: 50px;
 }
 
+.content-card.flex {
+  display: flex;
+}
+
 @media (min-width: 900px) {
   .content-card  {
       column-count: 2;
