@@ -180,3 +180,7 @@ ul {
 .small-warningr {
   color: var(--color-warning);
 }
+
+.mr-2 {
+  margin-right: 20px;
+}
