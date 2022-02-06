@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
     public accessDenied: boolean = false;
     public loading: boolean = false;
     public createAccount: boolean = false;
+    public messageError: string = '';
+    public messageSuccess: string = '';
 
     constructor(private fb: FormBuilder, public loginService: LoginService) {
       this.form = this.fb.group({
@@ -26,12 +28,35 @@ export class LoginComponent implements OnInit {
   }
 
   public async login() {
-
+    if (this.form.valid) {
+      this.loading = true;
+      try {
+        if (this.createAccount === false) {
+          const result = await this.loginService.login(this.form.controls['email'].value, this.form.controls['password'].value);
+          console.log(result)
+        } else {
+          const result = await this.loginService.createAccount(this.form.controls['email'].value, this.form.controls['password'].value);
+          if (result?.additionalUserInfo?.isNewUser) {
+            this.createAccount = false;
+            this.messageSuccess = 'Clique novamente em "ENTRAR", para fazer login!';
+          }
+        }
+      } catch (error: any) {
+        switch (error.code) {
+          case 'auth/email-already-in-use':
+            this.messageError = 'Não é possível utilizar esse e-mail, para criar uma conta!';
+            break;
+          case 'auth/wrong-password':
+            this.messageError = 'O seu usuário ou a sua senha são inválidos';
+            break;
+          default:
+            break;
+        }
+        console.log(JSON.stringify(error))
+      } finally {
+        this.loading = false;
+      }
+    } else {
+    }
   }
-
-  onSubmit() {
-    // aqui você pode implementar a logica para fazer seu formulário salvar
-    console.log(this.form.value);
-  }
-
 }
