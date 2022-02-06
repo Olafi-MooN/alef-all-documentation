@@ -11,10 +11,11 @@ export class LoginService {
 
   constructor(public auth: AngularFireAuth) { }
 
-  public async login(): Promise<firebase.auth.UserCredential> {
-    return this.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(_ => {
-      return this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-    });
+  public async login() {
+    this.auth.createUserWithEmailAndPassword('Alefmastertutor@gmail.com', '119182098102900');
+    console.log(this.auth.signInWithEmailAndPassword('Alefmastertutor@gmail.com', '119182098102900'));
+
+    // const user = this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
   public get currentUser(): any {

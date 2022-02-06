@@ -20,6 +20,9 @@ pre code.hljs {
   --padding-default: 8px;
   --dropdown-title-height: 31px;
   --padding-left-dropdown-li:  22px;
+  --color-danger: #ca3d3d;
+  --color-success: #2da32d;
+  --color-dwarning: #ffff00;
 
   /* Theme Principal Dark */
   --text-title: #ffffff;
@@ -43,6 +46,28 @@ pre code.hljs {
   --color-btn: #ced6d9;
 
   --shadow-box-card-view: #f5f5f0;
+
+  /* LOGIN */
+  --loginBorderRadus: 0.25rem;
+  --loginColor: #eee;
+  --loginInputBackgroundColor: #3b4148;
+  --loginInputHoverBackgroundColor: #434a52;
+  --loginLabelBackgroundColor: #363b41;
+  --loginSubmitBackgroundColor:#a01212;
+  --loginSubmitColor: #eee;
+  --loginSubmitHoverBackgroundColor: #631313;
+  --formGap: 0.875rem;
+  --htmlFontSize: 100%;
+  --bodyBackgroundColor: #03060b;
+  --bodyColor: var(--baseColor);
+  --bodyFontFamily: "Open Sans";
+  --bodyFontFamilyFallback: sans-serif;
+  --bodyFontSize: 0.875rem;
+  --bodyFontWeight: 400;
+  --bodyLineHeight: 1.5;
+  --baseColor: #656666;
+  --anchorColor: #eee;
+  --iconFill: #eee;
 }
 
 html[data-theme="light"] {
@@ -131,4 +156,27 @@ ul {
 
 .disabled-click {
   pointer-events: none;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.align-center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.small-danger {
+  color: var(--color-danger);
+}
+
+.small-success {
+  color: var(--color-success);
+}
+
+.small-warningr {
+  color: var(--color-warning);
 }

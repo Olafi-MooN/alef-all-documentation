@@ -21,6 +21,7 @@ import { ViewComponent } from './pages/view/view.component';
 import { LoginComponent } from './pages/login/login.component';
 import { environment } from 'src/environments/environment';
 import { PERSISTENCE, SETTINGS as AUTH_SETTINGS  } from '@angular/fire/compat/auth';
+import { LoadingComponent } from './shared/components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PERSISTENCE, SETTINGS as AUTH_SETTINGS  } from '@angular/fire/compat/au
     CodeEditorComponent,
     ViewComponent,
     CardListViewComponent,
-    LoginComponent
+    LoginComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

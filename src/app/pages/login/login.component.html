@@ -1,1 +1,54 @@
-<p>login works!</p>
+<div class="container-login">
+
+  <body class="align">
+
+    <div class="grid">
+
+
+      <form class="form login" [formGroup]="form" novalidate>
+        <div class="form__field">
+          <div class="form__group">
+            <label for="login__username">
+              <i class="bi bi-person" style="color: white;"></i>
+              <span class="hidden">Username</span></label>
+            <input autocomplete="username" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="email" type="email"
+              name="email" class="form__input" placeholder="E-mail" formControlName="email" required>
+          </div>
+          <div
+            *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)">
+            <small class="small-danger">Formato de email!</small>
+          </div>
+        </div>
+
+        <div class="form__field">
+          <div class="form__group">
+            <label for="login__password">
+              <i class="bi bi-key" style="color: white;"></i>
+              <span class="hidden">Password</span></label>
+            <input id="login__password" type="password" name="password" class="form__input" placeholder="Senha"
+              formControlName="password" required>
+          </div>
+        </div>
+
+        <div *ngIf="accessDenied">
+          <small class="small-danger text-align-center">O E-mail ou Senha é inválida!</small>
+        </div>
+
+        <div class="align-center" *ngIf="loading">
+          <alef-loading></alef-loading>
+        </div>
+
+        <div class="form__field align-center">
+          <input type="submit" [value]="createAccount? 'Criar Conta' : 'Entrar'">
+        </div>
+      </form>
+
+      <p class="text--center">
+        {{ createAccount? 'Já possuí uma conta? ': 'Não possui uma conta?'}}
+        <a (click)="createAccount = !createAccount">
+          {{createAccount ? 'Entrar em uma conta!' : 'Criar conta agora!'}}
+        </a>
+      </p>
+    </div>
+  </body>
+</div>
