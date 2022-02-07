@@ -11,6 +11,7 @@ import { LayoutComponent } from './shared/components/layout/layout.component';
 const routes: Routes = [
 
   { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'prefix'},
   {
     path: '',
     component: LayoutComponent,
