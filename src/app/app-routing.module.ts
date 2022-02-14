@@ -12,11 +12,11 @@ const routes: Routes = [
 
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'home', pathMatch: 'prefix'},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   {
     path: '',
     component: LayoutComponent,
     children: [
-      { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'create', component: CreateComponent, canActivate: [AuthGuard] },
       { path: 'view', component: ViewComponent, canActivate: [AuthGuard]},
       { path: 'view/:id', component: ViewComponent, canActivate: [AuthGuard]},

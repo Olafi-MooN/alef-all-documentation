@@ -3,7 +3,7 @@
     <div class="textarea">
       <alef-code-editor style="width: 90%;" (textareaEmitter)="markdownVisualizer($event)"></alef-code-editor>
     </div>
-    <div class="preview" [ngClass]="{'d-none': !preview}" [innerHTML]="html"></div>
+    <div class="preview" [ngClass]="{'d-none': !preview}" [innerHTML]="model?.conteudo ?? html"></div>
     <div class="options">
       <div class="teste">
         <p class="title-bar-editor" (click)="changeOptionHidden()"><i class="bi bi-arrow-right-square-fill" [ngClass]="{'left': optionHidden}"></i></p>
@@ -11,20 +11,23 @@
           <div class="config-preview">
             <label for="eyes-check">Preview markdown </label>
             <input type='checkbox' name='eyes-check' id="eyes-check" [checked]="preview" (change)="changePreview($event)"/>
+
           </div>
 
           <div class="input-group">
             <label for="title">Titulo</label>
-            <input type="text" id="title" [(ngModel)]="model.title" autocomplete="none" >
+            <input type="text" id="title" [(ngModel)]="model.title"  #ctrl="ngModel" autocomplete="none" required>
+            <small class="small-warning" *ngIf="ctrl.invalid">O Titulo não pode ser vazio</small>
           </div>
-          <div class="input-group">
-            <label for="title">Titulo</label>
-            <input type="text" id="title" [(ngModel)]="model.imgPost" autocomplete="none" >
+          <div class="input-group" style="margin-top: 20px;">
+            <label for="title">Imagem URL</label>
+            <input type="text" id="photoURL" [(ngModel)]="model.imgPost" #photoURL="ngModel" pattern="https?:\/\/(\S+\/?)*.(jpeg|png|svg)$" autocomplete="none" required>
+            <small class="small-warning" *ngIf="photoURL.invalid">Insira uma url válida, formatos suportados: (jpeg | png | svg)</small>
           </div>
-          <button class="btn-salvar" (click)="salvar()">Salvar</button>
+          <button class="btn-salvar" (click)="salvar()" [disabled]="ctrl.invalid || photoURL.invalid">Salvar</button>
         </div>
         </div>
       </div>
   </div>
 </div>
-f
+<alef-loading [hidden]="!spinnerActive" [spinner]="'full-page'"></alef-loading>

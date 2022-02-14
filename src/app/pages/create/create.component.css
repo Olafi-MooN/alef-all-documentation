@@ -66,7 +66,7 @@
 
 .btn-salvar {
   width: 100%;
-  height: 27px;
+  height: 32px;
   cursor: pointer;
   margin: 22px auto;
   display: block;
@@ -77,10 +77,15 @@
   font-weight: bold;
 }
 
+.btn-salvar:disabled {
+  cursor: not-allowed;
+}
+
 .bi.bi-arrow-right-square-fill {
   transition: transform 200ms ease-in;
   display: inline-block;
   transform: rotate(0deg);
+  cursor: pointer;
 }
 .bi.bi-arrow-right-square-fill.left {
   transition: transform 200ms ease-in;
@@ -105,4 +110,8 @@
   border: thin solid var(--input-border);
   border-radius: 4px;
   padding: 0 5px;
+}
+
+pre {
+  margin-top: 12px !important;
 }

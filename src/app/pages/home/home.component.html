@@ -1,12 +1,13 @@
+<alef-navbar style="width: 100%;"></alef-navbar>
 <div class="container-home">
   <div class="content-home">
     <div class="profile">
       <div class="d-grid-profile shadow">
         <div class="user-profile">
-          <img class="img-profile" src="https://github.com/Olafi-MooN.png"/>
+          <img class="img-profile" [src]="user.photoURL"/>
           <div class="content-text">
             <p>Seja bem vindo!</p>
-            <p>Olafi-MooN</p>
+            <p>{{user.displayName}}</p>
           </div>
         </div>
         <div class="user-profile-action">

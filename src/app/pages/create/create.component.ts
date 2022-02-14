@@ -1,9 +1,12 @@
+import { Router } from '@angular/router';
+import { FirestoreService } from './../../services/firebase/documents.service';
 import { Component, OnInit } from '@angular/core';
 import highlight from 'highlight.js';
 import { marked } from 'marked';
 import { v4 as uuidv4 } from 'uuid';
 
-import { ICardListViewModel } from 'src/app/shared/components/card-list-view/card-list-view.component';
+import { IDocumentsModel } from 'src/app/model/IDocumentsModel';
+import { getUser } from 'src/app/shared/utils/getUser';
 
 @Component({
   selector: 'alef-create',
@@ -16,13 +19,19 @@ export class CreateComponent implements OnInit {
   public preview: boolean = false;
   public optionHidden: boolean = false;
   public title: string = '';
+  public messageValidation: string = '';
+  public spinnerActive = false;
+  private uuid: string = uuidv4();
 
-  public model: ICardListViewModel = {} as ICardListViewModel;
+  public model: IDocumentsModel = {} as IDocumentsModel;
 
-  constructor() {}
+  constructor(public firestoreService: FirestoreService, public router: Router) {}
 
   ngOnInit(): void {
-    // this.documentationService.index().then(a => console.log(a));
+    const { user } = getUser();
+    this.model.uuid = `${user?.uid} - ${this.uuid}`  as string;
+    this.model.imgProfile = user?.photoURL as string;
+    this.model.nameUser = user?.displayName as string;
   }
 
   changePreview(e: any): void {
@@ -54,17 +63,21 @@ export class CreateComponent implements OnInit {
       xhtml: false,
     });
 
-    this.html = marked.parse(value);
+    this.model.conteudo = marked.parse(value);
   }
 
-  public salvar(): void{
-    // new FirebaseDb().store({
-    //   uuid: uuidv4(),
-    //   title: this.model.title,
-    //   conteudo: this.html,
-    //   nameUser: getStorage().result.user.displayName,
-    //   imgPost: this.model.imgPost,
-    //   imgProfile: getStorage().result.user.photoURL
-    // })
+  public async salvar(): Promise<void> {
+    if (this.model.title.length > 0) {
+      this.spinnerActive = true;
+      try {
+        const { user } = getUser();
+        const result = await this.firestoreService.createDocumentations(this.model);
+        if (result.id) this.router.navigateByUrl(`view/${user?.uid} - ${this.uuid}`)
+      } catch (error) {
+        alert('Ocorreu um erro: \n'+JSON.stringify(error))
+      } finally {
+        this.spinnerActive = false;
+      }
+    }
   }
 }

@@ -1,9 +1,9 @@
-<div class="container-view">
+<div class="container-view" [ngClass]="{preview: id}">
   <div class="content-view" *ngIf="!id">
     <div class="header">
       <div class="header-left">
         <h1>Explore Documentações</h1>
-        <p>Total de posts: 3</p>
+        <p>Total de posts: {{ model.length }}</p>
       </div>
       <div class="header-right">
         <input type="text" placeholder="Pesquisar documentos">
@@ -23,5 +23,5 @@
       </div>
   </div>
 
-  <div *ngIf="id" [innerHTML]="model[0]?.conteudo"></div>
+  <div class="preview-id" *ngIf="id" [innerHTML]="model[0]?.conteudo"></div>
 </div>

@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
       this.form = this.fb.group({
         email: ['', Validators.required],
         password: ['', Validators.required],
+        displayName: ['', Validators.required],
+        photoURL:  ['', Validators.required]
       })
     }
 
@@ -33,9 +35,8 @@ export class LoginComponent implements OnInit {
       try {
         if (this.createAccount === false) {
           const result = await this.loginService.login(this.form.controls['email'].value, this.form.controls['password'].value);
-          console.log(result)
         } else {
-          const result = await this.loginService.createAccount(this.form.controls['email'].value, this.form.controls['password'].value);
+          const result = await this.loginService.createAccount(this.form.controls['email'].value, this.form.controls['password'].value,  this.form.controls['displayName'].value,  this.form.controls['photoURL'].value);
           if (result?.additionalUserInfo?.isNewUser) {
             this.createAccount = false;
             this.messageSuccess = 'Clique novamente em "ENTRAR", para fazer login!';
@@ -52,7 +53,6 @@ export class LoginComponent implements OnInit {
           default:
             break;
         }
-        console.log(JSON.stringify(error))
       } finally {
         this.loading = false;
       }

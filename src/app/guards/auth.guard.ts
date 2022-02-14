@@ -1,4 +1,4 @@
-import { getUser } from './../shared/components/utils/getUser';
+import { getUser } from '../shared/utils/getUser';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';

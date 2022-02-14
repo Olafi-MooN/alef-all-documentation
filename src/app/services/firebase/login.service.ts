@@ -20,10 +20,13 @@ export class LoginService {
     return result;
   }
 
-  public async createAccount(email: string, password: string) {
-    const user = await this.auth.createUserWithEmailAndPassword(email, password);
+  public async createAccount(email: string, password: string, displayName: string, photoURL: string) {
+    const user = await this.auth.createUserWithEmailAndPassword(email, password)
+    if(user?.user) user?.user.updateProfile({displayName, photoURL});
     return user;
   }
+
+
 
   public get currentUser(): any {
     return this._currentUser;

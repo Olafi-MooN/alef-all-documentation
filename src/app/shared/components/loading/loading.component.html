@@ -1,1 +1,9 @@
-<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+
+<div [ngSwitch]="spinner">
+  <div class="content-loading" *ngSwitchCase="'full-page'">
+    <div class="center-loading">
+      <div class="loading"></div>
+    </div>
+  </div>
+  <div class="lds-ring" *ngSwitchDefault><div></div><div></div><div></div><div></div></div>
+</div>

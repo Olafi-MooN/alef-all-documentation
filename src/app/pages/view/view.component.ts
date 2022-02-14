@@ -23,7 +23,7 @@ export class ViewComponent extends BaseFormComponent implements OnInit{
 
   async ngOnInit() {
     this.id ?
-      this.firestoreService.getDocumentationsUuid('62827eb9-c4f8-4649-94cc-afe0005c1c72').subscribe(document => this.model = document)
+      this.firestoreService.getDocumentationsUuid(this.id as string).subscribe(document => this.model = document)
         :
       this.firestoreService.getDocumentations().subscribe(documents => this.model = documents)
   }

@@ -33,3 +33,39 @@
     transform: rotate(360deg);
   }
 }
+
+.content-loading {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(68, 54, 54, 0.501);
+  z-index: 10001;
+}
+
+.center-loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  border: 10px solid #EAF0F6;
+  border-radius: 50%;
+  border-top: 10px solid #d32525;
+  width: 150px;
+  height: 150px;
+  animation: spinner 3s linear infinite;
+}
+
+@keyframes spinner {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
