@@ -28,7 +28,7 @@
               <i class="bi bi-person" style="color: white;"></i>
             </label>
             <input autocomplete="nope" id="displayName" type="text"
-              name="displayName" class="form__input" placeholder="Nome usuário" formControlName="displayName" required>
+              name="displayName" class="form__input" placeholder="Nome usuário" formControlName="displayName"  [required]="createAccount === true">
           </div>
           <div
             *ngIf="form.controls['displayName'].invalid && (form.controls['displayName'].dirty || form.controls['displayName'].touched)">
@@ -43,11 +43,11 @@
               <i class="bi bi-person" style="color: white;"></i>
             </label>
             <input autocomplete="nope" id="photoURL" type="text"
-              name="photoURL" class="form__input" placeholder="https://stackoverflow.com/img.png" formControlName="photoURL" required>
+              name="photoURL" class="form__input" placeholder="https://stackoverflow.com/img.png" formControlName="photoURL"pattern="https?:\/\/(\S+\/?)*.(jpeg|png|svg)$" [required]="createAccount === true">
           </div>
           <div
             *ngIf="form.controls['photoURL'].invalid && (form.controls['photoURL'].dirty || form.controls['photoURL'].touched)">
-            <small class="small-danger">Formato de email!</small>
+            <small class="small-danger">Formatos suportados (jpeg | svg | png)</small>
           </div>
         </div>
 
@@ -59,6 +59,10 @@
               <span class="hidden">Password</span></label>
             <input id="login__password" autocomplete="off" autocomplete="nope" type="password" name="password" class="form__input" placeholder="Senha"
               formControlName="password" required>
+          </div>
+          <div
+            *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)">
+            <small class="small-danger">A senha deve ser maior que 6 caracteres</small>
           </div>
         </div>
 
@@ -85,7 +89,7 @@
 
       <p class="text--center">
         {{ createAccount? 'Já possuí uma conta? ': 'Não possui uma conta?'}}
-        <a (click)="createAccount = !createAccount">
+        <a (click)="createAccount = !createAccount" style="cursor: pointer;">
           {{createAccount ? 'Entrar em uma conta!' : 'Criar conta agora!'}}
         </a>
       </p>
