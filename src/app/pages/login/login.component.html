@@ -42,8 +42,8 @@
             <label for="login__username">
               <i class="bi bi-person" style="color: white;"></i>
             </label>
-            <input autocomplete="nope" id="photoURL" type="text"
-              name="photoURL" class="form__input" placeholder="https://stackoverflow.com/img.png" formControlName="photoURL"pattern="https?:\/\/(\S+\/?)*.(jpeg|png|svg)$" [required]="createAccount === true">
+            <input id="photoURL" type="url"
+              name="photoURL" class="form__input" placeholder="https://stackoverflow.com/img.png" formControlName="photoURL" pattern="https?:\/\/(\S+)*.(jpe?g|png|svg)$" [required]="createAccount === true">
           </div>
           <div
             *ngIf="form.controls['photoURL'].invalid && (form.controls['photoURL'].dirty || form.controls['photoURL'].touched)">
@@ -74,7 +74,7 @@
           <small class="small-danger text-align-center">{{ messageError ? messageError : 'Preencha todos os campos'}}</small>
         </div>
 
-        <div *ngIf="messageSuccess">
+        <div *ngIf="messageSuccess && f.submitted">
           <small class="small-success text-align-center">{{ messageSuccess }}</small>
         </div>
 
@@ -89,7 +89,7 @@
 
       <p class="text--center">
         {{ createAccount? 'Já possuí uma conta? ': 'Não possui uma conta?'}}
-        <a (click)="createAccount = !createAccount" style="cursor: pointer;">
+        <a (click)="createAccount = !createAccount; messageError = '' " style="cursor: pointer;">
           {{createAccount ? 'Entrar em uma conta!' : 'Criar conta agora!'}}
         </a>
       </p>

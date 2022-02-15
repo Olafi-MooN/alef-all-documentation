@@ -109,7 +109,7 @@ input[type="submit"] {
 }
 
 .login label,
-.login input[type="text"],
+.login input[type="url"],
 .login input[type="text"],
 .login input[type="email"],
 .login input[type="password"],
@@ -124,7 +124,8 @@ input[type="submit"] {
   border-top-right-radius: 0;
   padding-inline: 1.25rem;
 }
-.login input[type="text"],
+
+.login input[type="url"],
 .login input[type="text"],
 .login input[type="password"],
 .login input[type="email"] {
@@ -133,6 +134,9 @@ input[type="submit"] {
   border-top-left-radius: 0;
 }
 
+
+.login input[type="url"]:focus,
+.login input[type="url"]:hover,
 .login input[type="text"]:focus,
 .login input[type="text"]:hover,
 .login input[type="password"]:focus,

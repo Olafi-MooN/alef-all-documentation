@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   public async login() {
+    this.messageError = "";
     if (this.form.valid) {
       this.loading = true;
       try {
@@ -46,6 +47,9 @@ export class LoginComponent implements OnInit {
         switch (error.code) {
           case 'auth/email-already-in-use':
             this.messageError = 'Não é possível utilizar esse e-mail, para criar uma conta!';
+            break;
+          case 'auth/user-not-found':
+            this.messageError = 'O seu usuário ou a sua senha são inválidos';
             break;
           case 'auth/wrong-password':
             this.messageError = 'O seu usuário ou a sua senha são inválidos';
