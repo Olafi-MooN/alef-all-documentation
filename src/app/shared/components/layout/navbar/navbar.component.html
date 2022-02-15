@@ -1,10 +1,15 @@
 <div class="navbar">
-  <p class="mr-2">
-    {{emailUser}}
-  </p>
-
-
-  <div>
-    <alef-dark-mode></alef-dark-mode>
+  <div class="url">
+    <div *ngFor="let item of route; let i=index" style="cursor: pointer;" [routerLink]="['/'+item]">
+    <a class="url-item">{{ textLength(item, 10) }}</a> <p class="url-bar">{{ (this.route.length - 1) === convertNumber(i) ? '  ' :  (i === 0)  ? '  ' : ' / '}}</p>
+    </div>
+  </div>
+  <div style="display: flex;" >
+    <p style="margin: 0 20px">
+      {{emailUser}}
+    </p>
+    <div>
+      <alef-dark-mode></alef-dark-mode>
+    </div>
   </div>
 </div>

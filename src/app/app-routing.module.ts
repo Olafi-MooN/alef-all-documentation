@@ -13,13 +13,14 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'home', pathMatch: 'prefix'},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'home/create', component: CreateComponent, canActivate: [AuthGuard] },
   {
     path: '',
     component: LayoutComponent,
     children: [
-      { path: 'create', component: CreateComponent, canActivate: [AuthGuard] },
-      { path: 'view', component: ViewComponent, canActivate: [AuthGuard]},
-      { path: 'view/:id', component: ViewComponent, canActivate: [AuthGuard]},
+      { path: 'home/create/view', component: ViewComponent, canActivate: [AuthGuard]},
+      { path: 'home/create/view', component: ViewComponent, canActivate: [AuthGuard]},
+      { path: 'home/create/view/:id', component: ViewComponent, canActivate: [AuthGuard]},
     ],
   },
 

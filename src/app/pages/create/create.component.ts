@@ -72,7 +72,7 @@ export class CreateComponent implements OnInit {
       try {
         const { user } = getUser();
         const result = await this.firestoreService.createDocumentations(this.model);
-        if (result.id) this.router.navigateByUrl(`view/${user?.uid} - ${this.uuid}`)
+        if (result.id) this.router.navigateByUrl(`home/create/view${user?.uid} - ${this.uuid}`)
       } catch (error) {
         alert('Ocorreu um erro: \n'+JSON.stringify(error))
       } finally {
