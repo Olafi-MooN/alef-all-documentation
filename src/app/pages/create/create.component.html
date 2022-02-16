@@ -22,8 +22,15 @@
           </div>
           <div class="input-group" style="margin-top: 20px;">
             <label for="title">Imagem URL</label>
-            <input type="text" id="photoURL" [(ngModel)]="model.imgPost" #photoURL="ngModel" pattern="https?:\/\/(\S+)*.(jpe?g|png|svg)$" autocomplete="none" required>
+            <input type="text" id="photoURL" [(ngModel)]="model.imgPost" #photoURL="ngModel" pattern="https?:\/\/[\S+]*\.(jpg|jpeg|png|svg)$"  autocomplete="none" required>
             <small class="small-warning" *ngIf="photoURL.invalid">Insira uma url válida, formatos suportados: (jpeg | png | svg)</small>
+          </div>
+          <div class="input-group" style="margin-top: 20px;">
+            <label for="title">Referenciar projeto</label>
+            <select name="projetoReference" id="projetoReference" class="projetoReference" [(ngModel)]="model.referenceTechnology">
+              <option [value]="item" *ngFor="let item of referenceTechnology">{{item}}</option>
+              <option value="Outros" selected>Outros</option>
+            </select>
           </div>
           <button class="btn-salvar" (click)="salvar()" [disabled]="ctrl.invalid || photoURL.invalid">Salvar</button>
         </div>

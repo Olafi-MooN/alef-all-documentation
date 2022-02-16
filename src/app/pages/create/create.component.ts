@@ -1,3 +1,4 @@
+import { IReferenceString } from './../../model/IReferenceTechnology';
 import { Router } from '@angular/router';
 import { FirestoreService } from './../../services/firebase/documents.service';
 import { Component, OnInit } from '@angular/core';
@@ -21,6 +22,7 @@ export class CreateComponent implements OnInit {
   public title: string = '';
   public messageValidation: string = '';
   public spinnerActive = false;
+  public referenceTechnology: IReferenceString[] = ['Angular','Backend','Banco de dados','Html','Javascript','Node','React','Vue'] as IReferenceString[];
   private uuid: string = uuidv4();
 
   public model: IDocumentsModel = {} as IDocumentsModel;
@@ -32,6 +34,7 @@ export class CreateComponent implements OnInit {
     this.model.uuid = `${user?.uid} - ${this.uuid}`  as string;
     this.model.imgProfile = user?.photoURL as string;
     this.model.nameUser = user?.displayName as string;
+    this.model.referenceTechnology = "Outros";
   }
 
   changePreview(e: any): void {

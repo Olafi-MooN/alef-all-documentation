@@ -5,4 +5,5 @@ export interface IDocumentsModel {
   title: string;
   conteudo: string;
   uuid: string;
+  referenceTechnology: string;
 }

@@ -80,6 +80,11 @@
   border: thin solid var(--input-border);
   border-radius: 7px;
   font-weight: bold;
+  transition: filter 500ms ease-in-out;
+}
+
+.btn-salvar:hover {
+  filter: brightness(1.50);
 }
 
 .btn-salvar:disabled {
@@ -108,6 +113,11 @@
   color: var(--text-primary);
 }
 
+.projetoReference {
+  cursor: pointer;
+}
+
+.projetoReference,
 .input-group input {
   height: 26px;
   margin: 6px 0 0 0;

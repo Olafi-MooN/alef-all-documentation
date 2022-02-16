@@ -43,7 +43,7 @@
               <i class="bi bi-person" style="color: white;"></i>
             </label>
             <input id="photoURL" type="url"
-              name="photoURL" class="form__input" placeholder="https://stackoverflow.com/img.png" formControlName="photoURL" pattern="https?:\/\/(\S+)*.(jpe?g|png|svg)$" [required]="createAccount === true">
+              name="photoURL" class="form__input" placeholder="https://stackoverflow.com/img.png" formControlName="photoURL" pattern="https?:\/\/[\S+]*\.(jpg|jpeg|png|svg)$" [required]="createAccount === true">
           </div>
           <div
             *ngIf="form.controls['photoURL'].invalid && (form.controls['photoURL'].dirty || form.controls['photoURL'].touched)">
