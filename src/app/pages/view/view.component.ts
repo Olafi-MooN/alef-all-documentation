@@ -12,7 +12,7 @@ type IModelType = IDocumentsModel[];
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css'],
 })
-export class ViewComponent extends BaseFormComponent implements OnInit{
+export class ViewComponent extends BaseFormComponent implements OnInit {
   public model: IModelType = [] as IDocumentsModel[];
 
   constructor(
@@ -22,11 +22,16 @@ export class ViewComponent extends BaseFormComponent implements OnInit{
   }
 
   async ngOnInit() {
-    this.id ?
-      this.firestoreService.getDocumentationsUuid(this.id as string).subscribe(document => this.model = document)
-        :
-      this.firestoreService.getDocumentations().subscribe(documents => this.model = documents)
+    this.route.params.subscribe(
+      params => {
+        this.id ?
+        this.firestoreService.getDocumentationsUuid(this.id as string).subscribe(document => this.model = document)
+          :
+        this.firestoreService.getDocumentations().subscribe(documents => this.model = documents)
+      });
+
   }
+
 
   getFiltered(text?: string) {
 

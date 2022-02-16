@@ -1,4 +1,14 @@
+import { referencesTechnologies } from './../../../utils/getReferencesTechnology';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+
+import { IReferenceString, ListLiType } from 'src/app/model/IReferenceTechnology';
+import { FirestoreService } from 'src/app/services/firebase/documents.service';
+import { IDocumentsModel } from 'src/app/model/IDocumentsModel';
+
+export interface ISidebarListModel<T, U> {
+  title: T,
+  listLi: U;
+}
 
 @Component({
   selector: 'alef-sidebar',
@@ -8,133 +18,37 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit, AfterViewInit {
 
   public isOpen: boolean | undefined = true;
+  public listItem: ISidebarListModel<IReferenceString, ListLiType[]>[] = [] as ISidebarListModel<IReferenceString, ListLiType[]>[]
+  public documentsList: (IDocumentsModel[] | undefined)[]= [] as IDocumentsModel[][];
+  public referencesTechnologies: IReferenceString[] = referencesTechnologies();
 
-  public listItem: any[] = [
-    {
-      title: 'React',
-      listLi: [
-        { name: 'Getting starting', router: '/' },
-        { name: 'Hooks', router: '/' },
-        { name: 'Components', router: '/' },
-      ],
-    },
-    {
-      title: 'Angular',
-      listLi: [
-        { name: 'Getting starting', router: '/' },
-        { name: 'Hooks', router: '/' },
-        { name: 'Components', router: '/' },
-      ],
-    },
-    {
-      title: 'VueJs',
-      listLi: [
-        { name: 'Getting starting', router: '/' },
-        { name: 'Hooks', router: '/' },
-        { name: 'Components', router: '/' },
-      ],
-    },
-    {
-      title: 'React',
-      listLi: [
-        { name: 'Getting starting', router: '/' },
-        { name: 'Hooks', router: '/' },
-        { name: 'Components', router: '/' },
-      ],
-    },
-    {
-      title: 'Angular',
-      listLi: [
-        { name: 'Getting starting', router: '/' },
-        { name: 'Hooks', router: '/' },
-        { name: 'Components', router: '/' },
-      ],
-    },
-    {
-      title: 'VueJs',
-      listLi: [
-        { name: 'Getting starting', router: '/' },
-        { name: 'Hooks', router: '/' },
-        { name: 'Components', router: '/' },
-      ],
-    },
-    {
-      title: 'React',
-      listLi: [
-        { name: 'Getting starting', router: '/' },
-        { name: 'Hooks', router: '/' },
-        { name: 'Components', router: '/' },
-      ],
-    },
-    {
-      title: 'Angular',
-      listLi: [
-        { name: 'Getting starting', router: '/' },
-        { name: 'Hooks', router: '/' },
-        { name: 'Components', router: '/' },
-      ],
-    },
-    {
-      title: 'VueJs',
-      listLi: [
-        { name: 'Getting starting', router: '/' },
-        { name: 'Hooks', router: '/' },
-        { name: 'Components', router: '/' },
-      ],
-    },
-    {
-      title: 'React',
-      listLi: [
-        { name: 'Getting starting', router: '/' },
-        { name: 'Hooks', router: '/' },
-        { name: 'Components', router: '/' },
-      ],
-    },
-    {
-      title: 'Angular',
-      listLi: [
-        { name: 'Getting starting', router: '/' },
-        { name: 'Hooks', router: '/' },
-        { name: 'Components', router: '/' },
-      ],
-    },
-    {
-      title: 'VueJs',
-      listLi: [
-        { name: 'Getting starting', router: '/' },
-        { name: 'Hooks', router: '/' },
-        { name: 'Components', router: '/' },
-      ],
-    },
-    {
-      title: 'React',
-      listLi: [
-        { name: 'Getting starting', router: '/' },
-        { name: 'Hooks', router: '/' },
-        { name: 'Components', router: '/' },
-      ],
-    },
-    {
-      title: 'Angular',
-      listLi: [
-        { name: 'Getting starting', router: '/' },
-        { name: 'Hooks', router: '/' },
-        { name: 'Components', router: '/' },
-      ],
-    },
-    {
-      title: 'VueJs',
-      listLi: [
-        { name: 'Getting starting', router: '/' },
-        { name: 'Hooks', router: '/' },
-        { name: 'Components', router: '/' },
-      ],
-    },
-  ];
+  constructor(public firestoreService: FirestoreService) {}
 
-  constructor() {}
+  ngOnInit(): void {
+    this.firestoreService.getDocumentations().subscribe(documents => {
+      this.documentsList = this.referencesTechnologies.map(referenceTechnology => {
+        let documentList = documents.filter(a => a?.referenceTechnology === referenceTechnology)
+        if(documentList?.length > 0) {
+          return documentList
+        }
+        return;
+      }).filter(a => a !== undefined)
 
-  ngOnInit(): void {}
+      this.listItem = this.documentsList?.map(documentsFiltered => {
+        let listLi = documentsFiltered?.map(a => {
+          return { name: a.title, router: a.uuid } as ListLiType;
+        });
+
+        let referenceTechnology = (documentsFiltered as IDocumentsModel[])[0].referenceTechnology
+
+        return {
+          title: referenceTechnology,
+          listLi
+        } as ISidebarListModel<IReferenceString, ListLiType[]>
+      })
+    });
+  }
+
   ngAfterViewInit(): void {}
 
   public animationOpenDropdown(event: EventTarget | null) : void{

@@ -11,9 +11,10 @@ import { LayoutComponent } from './shared/components/layout/layout.component';
 const routes: Routes = [
 
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'prefix'},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'home/create', component: CreateComponent, canActivate: [AuthGuard] },
+
+  //child's
   {
     path: '',
     component: LayoutComponent,
@@ -24,6 +25,10 @@ const routes: Routes = [
     ],
   },
 
+  // redirects
+  { path: '', redirectTo: 'home', pathMatch: 'prefix'},
+  { path: 'view', redirectTo: 'home/create/view', pathMatch: 'prefix'},
+  { path: 'create', redirectTo: 'home/create', pathMatch: 'prefix'},
 ];
 
 

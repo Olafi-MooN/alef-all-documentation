@@ -7,7 +7,7 @@
       </div>
     </ng-container>
     <ng-container dropdown-footer  *ngFor="let li of item.listLi">
-      <li class="dropdown-li" >{{li.name}}</li>
+      <li class="dropdown-li" [routerLink]="['/home/create/view/'+li.router]" >{{li.name}}</li>
     </ng-container>
   </alef-dropdown>
 </div>
