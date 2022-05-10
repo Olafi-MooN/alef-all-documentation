@@ -15,7 +15,7 @@ export class LoginService {
     const result = await this.auth.signInWithEmailAndPassword(email, password);
     if(result?.user?.email) {
       localStorage.setItem('user', JSON.stringify(result));
-      this.router.navigateByUrl('home');
+      this.router.navigateByUrl(window.history.state.prevPath ?? 'home');
     }
     return result;
   }
